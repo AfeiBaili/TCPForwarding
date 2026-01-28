@@ -13,7 +13,7 @@ import java.net.Socket
  *@version 2026/1/28 16:35
  */
 
-class ClientHandler(val listenHost: String, val listenPort: Int) {
+class NetClient(val listenHost: String, val listenPort: Int) {
     fun handle(client: Socket) {
         "${client.remoteSocketAddress}已连接".info(false)
         val target = Socket()
