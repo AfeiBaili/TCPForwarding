@@ -24,18 +24,18 @@ class ClientHandler(val listenHost: String, val listenPort: Int) {
     }
 
     fun pipe(input: InputStream, output: OutputStream) {
-        runCatching {
-            serverScope.launch {
+        serverScope.launch {
+            runCatching {
                 val bytes = ByteArray(1024 * 8)
                 var len = -1
                 while (input.read(bytes).also { len = it } != -1) {
                     output.write(bytes, 0, len)
                     output.flush()
                 }
+            }.onFailure {
+                input.close()
+                output.close()
             }
-        }.onFailure {
-            input.close()
-            output.close()
         }
     }
 }
