@@ -10,6 +10,6 @@ import kotlin.test.Test
 class TestConnect {
     @Test
     fun test() {
-        main(arrayOf("-p=7777", "-t=7778", "-h=afeibaili.cn"))
+        main(arrayOf("-p=7777", "-t=7779", "-h=afeibaili.cn"))
     }
 }

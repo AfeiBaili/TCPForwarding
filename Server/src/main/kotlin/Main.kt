@@ -47,7 +47,7 @@ fun main(args: Array<String>) {
         if (client == null) continue
         serverScope.launch {
             runCatching {
-                NetClient(host, targetPort).handle(client)
+                NetClient(client,host, targetPort).connect()
             }.onFailure { exception ->
                 "网络错误: ${exception.message}".error()
             }
